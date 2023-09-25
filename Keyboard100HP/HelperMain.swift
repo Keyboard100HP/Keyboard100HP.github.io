@@ -1,38 +1,47 @@
 import Foundation
-import IOKit.hid
+import CoreGraphics
 
 class HelperMain {
     
-    var manager: IOHIDManager
+    var eventTap: CFMachPort?
     
-    init() {
-        manager = IOHIDManagerCreate(kCFAllocatorDefault, IOOptionBits(kIOHIDOptionsTypeNone))
-    }
-    
-    func openDevice() {
-        let deviceMatching = [kIOHIDDeviceUsagePageKey: kHIDPage_GenericDesktop,
-                              kIOHIDDeviceUsageKey: kHIDUsage_GD_Keyboard] as CFDictionary
+    func createEventTap() {
+        let eventMask = CGEventMask(1 << CGEventType.keyDown.rawValue) | CGEventMask(1 << CGEventType.keyUp.rawValue) | CGEventMask(1 << CGEventType.flagsChanged.rawValue)
+
         
-        IOHIDManagerSetDeviceMatching(manager, deviceMatching)
-        IOHIDManagerRegisterInputValueCallback(manager, handleKeyboard, nil)
-        IOHIDManagerScheduleWithRunLoop(manager, CFRunLoopGetCurrent(), CFRunLoopMode.defaultMode.rawValue)
-        IOHIDManagerOpen(manager, IOOptionBits(kIOHIDOptionsTypeNone))
+        eventTap = CGEvent.tapCreate(tap: .cghidEventTap,
+                                     place: .headInsertEventTap,
+                                     options: .defaultTap,
+                                     eventsOfInterest: eventMask,
+                                     callback: handleEvent,
+                                     userInfo: nil)
+        
+        if let eventTap = eventTap {
+            let runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0)
+            CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, .commonModes)
+            CGEvent.tapEnable(tap: eventTap, enable: true)
+        } else {
+            print("Failed to create event tap")
+        }
     }
     
     func run() {
-        openDevice()
+        createEventTap()
         CFRunLoopRun()
     }
 }
 
-func handleKeyboard(context: Optional<UnsafeMutableRawPointer>, result: IOReturn, sender: Optional<UnsafeMutableRawPointer>, value: IOHIDValue) {
-    let element = IOHIDValueGetElement(value)
-    let usagePage = IOHIDElementGetUsagePage(element)
-    let usage = IOHIDElementGetUsage(element)
-    
-    if usagePage == kHIDPage_KeyboardOrKeypad {
-        print("Key Pressed: \(usage)")
+func handleEvent(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {
+    if type == .keyDown || type == .keyUp {
+        let keyCode = event.getIntegerValueField(.keyboardEventKeycode)
+        print("Key code: \(keyCode)")
+    } else if type == .flagsChanged {
+        let flags = event.flags
+        if flags.contains(.maskShift) {
+            print("Shift key event detected!")
+        }
+        // Добавьте другие проверки для других модификаторов, если это необходимо
     }
+    return Unmanaged.passRetained(event)
 }
-
 
