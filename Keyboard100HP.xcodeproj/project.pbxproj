@@ -7,23 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B52A1CA02AC16C8B00BD62EC /* Keyboard100HPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A1C9F2AC16C8B00BD62EC /* Keyboard100HPApp.swift */; };
+		B52A1CA02AC16C8B00BD62EC /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A1C9F2AC16C8B00BD62EC /* App.swift */; };
 		B52A1CA22AC16C8B00BD62EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A1CA12AC16C8B00BD62EC /* ContentView.swift */; };
 		B52A1CA42AC16C8D00BD62EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52A1CA32AC16C8D00BD62EC /* Assets.xcassets */; };
 		B52A1CA72AC16C8D00BD62EC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52A1CA62AC16C8D00BD62EC /* Preview Assets.xcassets */; };
+		B52A1CB02AC16CB200BD62EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A1CAF2AC16CB200BD62EC /* AppDelegate.swift */; };
+		B52A1CB22AC174FD00BD62EC /* Monitoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A1CB12AC174FD00BD62EC /* Monitoring.swift */; };
+		B5E3F6B12AC1D21600D09BEC /* HelperMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E3F6B02AC1886100D09BEC /* HelperMain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B52A1C9C2AC16C8B00BD62EC /* Keyboard100HP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Keyboard100HP.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B52A1C9F2AC16C8B00BD62EC /* Keyboard100HPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard100HPApp.swift; sourceTree = "<group>"; };
+		B52A1C9F2AC16C8B00BD62EC /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		B52A1CA12AC16C8B00BD62EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B52A1CA32AC16C8D00BD62EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B52A1CA62AC16C8D00BD62EC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B52A1CA82AC16C8D00BD62EC /* Keyboard100HP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Keyboard100HP.entitlements; sourceTree = "<group>"; };
+		B52A1CAE2AC16CA000BD62EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B52A1CAF2AC16CB200BD62EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B52A1CB12AC174FD00BD62EC /* Monitoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monitoring.swift; sourceTree = "<group>"; };
+		B52A1CB72AC1869600BD62EC /* KeyReaderHelper.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyReaderHelper.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		B52A1CBB2AC186B000BD62EC /* KeyReaderHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KeyReaderHelper-Info.plist"; sourceTree = "<group>"; };
+		B5E3F6B02AC1886100D09BEC /* HelperMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperMain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B52A1C992AC16C8B00BD62EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B52A1CB42AC1869600BD62EC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				B52A1C9C2AC16C8B00BD62EC /* Keyboard100HP.app */,
+				B52A1CB72AC1869600BD62EC /* KeyReaderHelper.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -52,8 +69,13 @@
 		B52A1C9E2AC16C8B00BD62EC /* Keyboard100HP */ = {
 			isa = PBXGroup;
 			children = (
-				B52A1C9F2AC16C8B00BD62EC /* Keyboard100HPApp.swift */,
+				B52A1CAE2AC16CA000BD62EC /* Info.plist */,
+				B52A1C9F2AC16C8B00BD62EC /* App.swift */,
 				B52A1CA12AC16C8B00BD62EC /* ContentView.swift */,
+				B52A1CB12AC174FD00BD62EC /* Monitoring.swift */,
+				B52A1CAF2AC16CB200BD62EC /* AppDelegate.swift */,
+				B52A1CBB2AC186B000BD62EC /* KeyReaderHelper-Info.plist */,
+				B5E3F6B02AC1886100D09BEC /* HelperMain.swift */,
 				B52A1CA32AC16C8D00BD62EC /* Assets.xcassets */,
 				B52A1CA82AC16C8D00BD62EC /* Keyboard100HP.entitlements */,
 				B52A1CA52AC16C8D00BD62EC /* Preview Content */,
@@ -89,6 +111,23 @@
 			productReference = B52A1C9C2AC16C8B00BD62EC /* Keyboard100HP.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B52A1CB62AC1869600BD62EC /* KeyReaderHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B52A1CB82AC1869600BD62EC /* Build configuration list for PBXNativeTarget "KeyReaderHelper" */;
+			buildPhases = (
+				B52A1CB32AC1869600BD62EC /* Sources */,
+				B52A1CB42AC1869600BD62EC /* Frameworks */,
+				B52A1CB52AC1869600BD62EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KeyReaderHelper;
+			productName = KeyReaderHelper;
+			productReference = B52A1CB72AC1869600BD62EC /* KeyReaderHelper.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -100,6 +139,9 @@
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					B52A1C9B2AC16C8B00BD62EC = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					B52A1CB62AC1869600BD62EC = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
@@ -118,6 +160,7 @@
 			projectRoot = "";
 			targets = (
 				B52A1C9B2AC16C8B00BD62EC /* Keyboard100HP */,
+				B52A1CB62AC1869600BD62EC /* KeyReaderHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -132,6 +175,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B52A1CB52AC1869600BD62EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -139,8 +189,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B52A1CB02AC16CB200BD62EC /* AppDelegate.swift in Sources */,
+				B5E3F6B12AC1D21600D09BEC /* HelperMain.swift in Sources */,
+				B52A1CB22AC174FD00BD62EC /* Monitoring.swift in Sources */,
 				B52A1CA22AC16C8B00BD62EC /* ContentView.swift in Sources */,
-				B52A1CA02AC16C8B00BD62EC /* Keyboard100HPApp.swift in Sources */,
+				B52A1CA02AC16C8B00BD62EC /* App.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B52A1CB32AC1869600BD62EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +339,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Keyboard100HP/Info.plist;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = Yes;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -306,6 +368,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Keyboard100HP/Info.plist;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = Yes;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -316,6 +380,48 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B52A1CB92AC1869600BD62EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QXZMG6HD5C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "KeyReaderHelper-Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = room.KeyReaderHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		B52A1CBA2AC1869600BD62EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QXZMG6HD5C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "KeyReaderHelper-Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = room.KeyReaderHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -336,6 +442,15 @@
 			buildConfigurations = (
 				B52A1CAC2AC16C8D00BD62EC /* Debug */,
 				B52A1CAD2AC16C8D00BD62EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B52A1CB82AC1869600BD62EC /* Build configuration list for PBXNativeTarget "KeyReaderHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B52A1CB92AC1869600BD62EC /* Debug */,
+				B52A1CBA2AC1869600BD62EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

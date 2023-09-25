@@ -9,6 +9,12 @@ import SwiftUI
 
 @main
 struct Keyboard100HPApp: App {
+    let monitoring = Monitoring()
+
+    init(){
+        monitoring.run()
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
