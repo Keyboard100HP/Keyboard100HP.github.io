@@ -12,8 +12,12 @@
 		B52A1CA42AC16C8D00BD62EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52A1CA32AC16C8D00BD62EC /* Assets.xcassets */; };
 		B52A1CA72AC16C8D00BD62EC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52A1CA62AC16C8D00BD62EC /* Preview Assets.xcassets */; };
 		B52A1CB02AC16CB200BD62EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A1CAF2AC16CB200BD62EC /* AppDelegate.swift */; };
-		B52A1CB22AC174FD00BD62EC /* Monitoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A1CB12AC174FD00BD62EC /* Monitoring.swift */; };
-		B5E3F6B12AC1D21600D09BEC /* HelperMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E3F6B02AC1886100D09BEC /* HelperMain.swift */; };
+		B5E3F6B12AC1D21600D09BEC /* HelperMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E3F6B02AC1886100D09BEC /* HelperMonitor.swift */; };
+		B5E3F6B32AC1F45100D09BEC /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E3F6B22AC1F45100D09BEC /* AppModel.swift */; };
+		B5E3F6B52AC1F46B00D09BEC /* InputSourceSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E3F6B42AC1F46B00D09BEC /* InputSourceSwitcher.swift */; };
+		B5E3F6B72AC1F48500D09BEC /* ShortcutCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E3F6B62AC1F48500D09BEC /* ShortcutCapture.swift */; };
+		B5FFF19E2AC77BCB00514297 /* AccessModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FFF19D2AC77BCB00514297 /* AccessModule.swift */; };
+		B5FFF1A22ACB65E500514297 /* ClickMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FFF1A12ACB65E400514297 /* ClickMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,10 +29,14 @@
 		B52A1CA82AC16C8D00BD62EC /* Keyboard100HP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Keyboard100HP.entitlements; sourceTree = "<group>"; };
 		B52A1CAE2AC16CA000BD62EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B52A1CAF2AC16CB200BD62EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B52A1CB12AC174FD00BD62EC /* Monitoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monitoring.swift; sourceTree = "<group>"; };
 		B52A1CB72AC1869600BD62EC /* KeyReaderHelper.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyReaderHelper.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52A1CBB2AC186B000BD62EC /* KeyReaderHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KeyReaderHelper-Info.plist"; sourceTree = "<group>"; };
-		B5E3F6B02AC1886100D09BEC /* HelperMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperMain.swift; sourceTree = "<group>"; };
+		B5E3F6B02AC1886100D09BEC /* HelperMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperMonitor.swift; sourceTree = "<group>"; };
+		B5E3F6B22AC1F45100D09BEC /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		B5E3F6B42AC1F46B00D09BEC /* InputSourceSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSourceSwitcher.swift; sourceTree = "<group>"; };
+		B5E3F6B62AC1F48500D09BEC /* ShortcutCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutCapture.swift; sourceTree = "<group>"; };
+		B5FFF19D2AC77BCB00514297 /* AccessModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessModule.swift; sourceTree = "<group>"; };
+		B5FFF1A12ACB65E400514297 /* ClickMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,12 +78,16 @@
 			isa = PBXGroup;
 			children = (
 				B52A1CAE2AC16CA000BD62EC /* Info.plist */,
-				B52A1C9F2AC16C8B00BD62EC /* App.swift */,
-				B52A1CA12AC16C8B00BD62EC /* ContentView.swift */,
-				B52A1CB12AC174FD00BD62EC /* Monitoring.swift */,
 				B52A1CAF2AC16CB200BD62EC /* AppDelegate.swift */,
+				B52A1C9F2AC16C8B00BD62EC /* App.swift */,
+				B5FFF1A12ACB65E400514297 /* ClickMonitor.swift */,
+				B52A1CA12AC16C8B00BD62EC /* ContentView.swift */,
+				B5E3F6B22AC1F45100D09BEC /* AppModel.swift */,
+				B5FFF19D2AC77BCB00514297 /* AccessModule.swift */,
+				B5E3F6B62AC1F48500D09BEC /* ShortcutCapture.swift */,
+				B5E3F6B42AC1F46B00D09BEC /* InputSourceSwitcher.swift */,
+				B5E3F6B02AC1886100D09BEC /* HelperMonitor.swift */,
 				B52A1CBB2AC186B000BD62EC /* KeyReaderHelper-Info.plist */,
-				B5E3F6B02AC1886100D09BEC /* HelperMain.swift */,
 				B52A1CA32AC16C8D00BD62EC /* Assets.xcassets */,
 				B52A1CA82AC16C8D00BD62EC /* Keyboard100HP.entitlements */,
 				B52A1CA52AC16C8D00BD62EC /* Preview Content */,
@@ -189,11 +201,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5E3F6B72AC1F48500D09BEC /* ShortcutCapture.swift in Sources */,
+				B5E3F6B52AC1F46B00D09BEC /* InputSourceSwitcher.swift in Sources */,
 				B52A1CB02AC16CB200BD62EC /* AppDelegate.swift in Sources */,
-				B5E3F6B12AC1D21600D09BEC /* HelperMain.swift in Sources */,
-				B52A1CB22AC174FD00BD62EC /* Monitoring.swift in Sources */,
+				B5E3F6B32AC1F45100D09BEC /* AppModel.swift in Sources */,
+				B5E3F6B12AC1D21600D09BEC /* HelperMonitor.swift in Sources */,
+				B5FFF19E2AC77BCB00514297 /* AccessModule.swift in Sources */,
 				B52A1CA22AC16C8B00BD62EC /* ContentView.swift in Sources */,
 				B52A1CA02AC16C8B00BD62EC /* App.swift in Sources */,
+				B5FFF1A22ACB65E500514297 /* ClickMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +356,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Keyboard100HP/Info.plist;
-				INFOPLIST_KEY_NSAppleEventsUsageDescription = Yes;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -369,7 +385,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Keyboard100HP/Info.plist;
-				INFOPLIST_KEY_NSAppleEventsUsageDescription = Yes;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -392,6 +408,7 @@
 				DEVELOPMENT_TEAM = QXZMG6HD5C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "KeyReaderHelper-Info.plist";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSPrincipalClass = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -413,6 +430,7 @@
 				DEVELOPMENT_TEAM = QXZMG6HD5C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "KeyReaderHelper-Info.plist";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSPrincipalClass = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";

@@ -6,18 +6,30 @@
 //
 
 import SwiftUI
+import Combine
+import AppKit
+
+//final class Zoo: ObservableObject {
+//    private var cancellable = Set<AnyCancellable>()
+//
+//    init() {
+//        NotificationCenter.default.publisher(for: NSWindow.didBecomeKeyNotification)
+//            .sink { _ in
+//                print("✅")
+//            }
+//            .store(in: &cancellable)
+//    }
+//}
 
 @main
-struct Keyboard100HPApp: App {
-    let monitoring = Monitoring()
-
-    init(){
-        monitoring.run()
-    }
-
+struct LangKeeperApp: App {
+//    @StateObject private var zoo = Zoo()
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
-        WindowGroup {
+        MenuBarExtra("Keyboard100HP", systemImage: "hammer") {
             ContentView()
         }
+        .menuBarExtraStyle(.window)
     }
 }
