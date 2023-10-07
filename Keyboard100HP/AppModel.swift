@@ -16,7 +16,6 @@ class AppModel: ObservableObject {
                 !self.shortcutCapture.activeShortcutNames.isEmpty
             ) {
                 let isDown = keyData.2 == "keyDown";
-                let isUp = keyData.2 == "keyUp";
                 let isTrigger = self.arraysHaveSameElements(self.shortcutCapture.activeShortcutNames, self.shortcutCapture.presedShortcutNames)
                 
                 if (self.shortcutCapture.activeShortcutNames.count == 1) {
@@ -35,11 +34,10 @@ class AppModel: ObservableObject {
                     }
 
                     if (isFastShortcutFinishing) {
-                        let time = self.timeKeyDown!
+                        let timeKeyDown = self.timeKeyDown!
                         self.timeKeyDown = nil
                         
-                        if (time > Date().addingTimeInterval(-0.25)) {
-                            print("SWITCH!")
+                        if (timeKeyDown > Date().addingTimeInterval(-0.75)) {
                             return self.handleFnKeyPress()
                         }
                     }
@@ -70,4 +68,5 @@ class AppModel: ObservableObject {
         InputSourceSwitcher.switchToNextInputSource()
         return shortcutCapture.isCanceling ? true : false
     }
+    
 }

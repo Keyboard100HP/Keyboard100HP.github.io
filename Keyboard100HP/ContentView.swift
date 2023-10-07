@@ -9,7 +9,6 @@ struct GrowingButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding(.horizontal, 30)
-//            .padding(.vertical, 8)
             .frame(height: 30)
             .background(
                 ZStack {
@@ -30,8 +29,6 @@ struct GrowingButton: ButtonStyle {
             .animation(.easeOut(duration: 0.2), value: isHovered) // Добавлено для плавного изменения фона
     }
 }
-
-
 
 struct GrowingButtonSecond: ButtonStyle {
     var isHovered: Bool = false
@@ -62,15 +59,6 @@ struct GrowingButtonSecond: ButtonStyle {
                                         ),
                                         location: 0.0
                                     ),
-//                                    Gradient.Stop(
-//                                        color: Color(
-//                                            hue: 335 / 360,
-//                                            saturation: 10 / 100,
-//                                            brightness: 57 / 100,
-//                                            opacity: 1.0
-//                                        ),
-//                                        location: 1.0
-//                                    )
                                    ]
                             ),
                             center: UnitPoint.center,
@@ -146,7 +134,6 @@ struct CenterButton: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-//            .font(.system(size: 18, weight: .medium))
             .foregroundColor(.white)
             .frame(width: 30, height: 30)
             .background(
@@ -174,23 +161,25 @@ struct CenterButton: ButtonStyle {
 }
 
 extension Notification.Name {
-    static let pingNotification = Notification.Name("pingNotification")
+    static let updateStatus = Notification.Name("updateStatus")
 }
 
 
 struct ContentView: View {
+//    @EnvironmentObject var updateManager: UpdateManager
+    @ObservedObject var updateManager = UpdateManager.shared
+    @ObservedObject var shortcutCapture = ShortcutCapture.shared
+    
     @State private var globalClick: CGPoint = .zero
     
-    @ObservedObject var shortcutCapture = ShortcutCapture.shared
     @State private var isHoveredClose = false
     @State private var isHoveredStart = false
     @State private var isHoveredRecord = false
     @State private var isHoveredDelayed = false
+    
     @State private var hoverWorkItem: DispatchWorkItem?
     @State private var helpInfo = ""
     
-    @State private var lastPingDate = Date()
-
     
     func handleTap(on elementID: String) {
         switch elementID {
@@ -203,17 +192,6 @@ struct ContentView: View {
 
     var body: some View {
         ZStack() {
-//            GeometryReader { geometry in
-//                Text("Last ping: \(lastPingDate)")
-//                    .onReceive(NotificationCenter.default.publisher(for: .pingNotification)) { _ in
-//                        print("CALL !!")
-//                        lastPingDate = Date()
-// 
-//                        print("geometry.size.width", geometry.size.width)
-//               
-//                    }
-//            }
-//            
             GeometryReader { geometry in
                 Rectangle()
                     .fill(Color.clear)
@@ -226,45 +204,7 @@ struct ContentView: View {
             
             
             VStack(spacing: 30) {
-//                HStack(spacing: 0) {
-//                    Button(isHoveredClose ? "(ง︡'-'︠)ง" : "( ͡• ͜ʖ ͡•)") {
-//                        NSApplication.shared.terminate(self)
-//                    }
-//                    .buttonStyle(GrowingButtonSecond(isHovered: isHoveredClose))
-//                    .onHover { isHovered in
-//                        isHoveredClose = isHovered
-//                    }
-//                    .overlay(
-//                        Group {
-//                            if isHoveredClose {
-//                                VStack {
-//                                    TooltipShape()
-//                                        .fill(Color(red: 180/255, green: 180/255, blue: 180/255))
-//                                            .shadow(color: Color.gray, radius: 0, x: 0, y: 0)
-//                                        .shadow(color: Color.black.opacity(0.25), radius: 3, x: 2, y: 2)
-////                                        .frame(width: 5)
-//                                        .overlay(
-//                                            Text("Выйти?")
-//                                                .padding(.vertical, 5)
-//                                                .padding(.trailing, -10)
-//                                                .foregroundColor(.white)
-//                                        )
-//                                        .offset(x: 95, y: -5)
-//                                    Spacer()
-//                                }
-//                            }
-//                        }
-//                    )
-//                    .animation(.easeOut(duration: 0.2), value: isHoveredClose)
-//
-//
-//                    if isHoveredClose {
-//                        Spacer()
-//                            .frame(width: 30)
-//                    }
-//                }
-                
-                
+
                 VStack(spacing: 15) {
                     ZStack {
                         Rectangle()
@@ -297,14 +237,7 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .allowsHitTesting(false)
                     }
-                    
-//                    Toggle(isOn: $shortcutCapture.isCancelingToggler) {
-//                        Text("Отменять системные хоткеи")
-//                    }
-//                    .onTapGesture {
-//                        handleTap(on: "")
-//                    }
-//                    .toggleStyle(.checkbox)
+
                 }
                 
                 ZStack {
@@ -321,7 +254,6 @@ struct ContentView: View {
                         .onTapGesture {
                             handleTap(on: "")
                         }
-//
                         
                         Button(action: {
                             shortcutCapture.toggleCanceling()
@@ -353,30 +285,7 @@ struct ContentView: View {
                         .onTapGesture {
                             handleTap(on: "")
                         }
-//                        .overlay(
-//                            Group {
-//                                if isHoveredClose {
-//                                    VStack {
-//                                        TooltipShapeBottom()
-//                                            .fill(Color(red: 50/255, green: 50/255, blue: 55/255))
-//                                            .shadow(color: Color.gray, radius: 0, x: 0, y: 0)
-//                                            .shadow(color: Color.black.opacity(0.25), radius: 3, x: 2, y: 2)
-//                                            .frame(minWidth: 0, minHeight: 40)
-//                                            .overlay(
-//                                                Text("Отменять системные хоткеи?")
-//                                                    .offset(y: -3)
-//                                                    .foregroundColor(.white)
-//                                            )
-//                                            .offset(x: 0, y: -35)
-//                                    }
-//                                }
-//                            }
-//                        )
-//                        .animation(.easeOut(duration: 0.2), value: isHoveredClose)
-//                        .onHover { isHovered in
-//                            isHoveredClose = isHovered
-//                        }
-                        
+
                         Button(
                             action: {
                                 if shortcutCapture.isMonitoring {
@@ -420,9 +329,18 @@ struct ContentView: View {
             VStack {
                 Spacer() // Занимает все доступное пространство сверху
                 HStack {
-                    Text(helpInfo)
+                    Group {
+                        if ((helpInfo.count != 0) ) {
+                            Text(helpInfo)
+                        } else if (updateManager.isUpdateAvailable) {
+                            Link(
+                                "Доступно обновление",
+                                destination: URL(string: "https://vk.com/maks_vk")!
+                            )
+                        }
+                    }
                     .padding(.vertical, 10)
-                    .foregroundColor(Color.gray)
+                    .foregroundColor(Color.blue)
                 }
             }
 

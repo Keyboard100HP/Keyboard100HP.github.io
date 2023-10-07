@@ -17,6 +17,10 @@ class HelperMonitor {
 //        }
 
     }
+    
+    deinit {
+        stop()
+    }
 
     
     func createEventTap() {
@@ -45,6 +49,13 @@ class HelperMonitor {
     public func start() {
         createEventTap()
     }
+    
+    public func stop() {
+        if let eventTap = eventTap {
+            CGEvent.tapEnable(tap: eventTap, enable: false)
+        }
+    }
+
 }
 
 func handleEvent(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {

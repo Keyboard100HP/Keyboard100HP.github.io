@@ -24,14 +24,15 @@ class ShortcutCapture: ObservableObject {
             activeShortcutNames = activeShortcutNamesStore
         }
         if let isMonitoringStore = defaults.bool(forKey: "isMonitoring") as? Bool {
-            isMonitoring = isMonitoringStore
+            if (isMonitoringStore) {
+                startMonitoring()
+            }
         }
         if let isCancelingStore = defaults.bool(forKey: "isCanceling") as? Bool {
             isCanceling = isCancelingStore
         }
         
         subscribeMonitoring()
-        startListening()
     }
     
     func isHelperInstalled() -> Bool {
@@ -86,7 +87,7 @@ class ShortcutCapture: ObservableObject {
             }
 
             if (isDownEvent) {
-                print("Down: presed", activeKeyName, activeKeyCode)
+//                print("Down: presed", activeKeyName, activeKeyCode)
                 if (presedShortcutNames.isEmpty && !activeShortcutNames.isEmpty) {
                     if (isRecord) {
                         activeShortcutNames.removeAll()
@@ -108,7 +109,7 @@ class ShortcutCapture: ObservableObject {
             }
 
             if (isUpEvent) {
-                print("Up: presed", activeKeyName, "\n")
+//                print("Up: presed", activeKeyName, "\n")
                 presedShortcutNames = presedShortcutNames.filter { $0 != activeKeyName }
                 presedShortcutCodes = presedShortcutCodes.filter { $0 != activeKeyCode }
             }
@@ -117,7 +118,6 @@ class ShortcutCapture: ObservableObject {
                 self.stopRecord()
             }
 
-//            guard (self.handle != nil) else {return false}
             let pressResult = self.handle!( (activeKeyName, activeKeyCode, (isDownEvent ? "keyDown" : "keyUp")) )
             
             if (isRecord) {
@@ -125,8 +125,6 @@ class ShortcutCapture: ObservableObject {
             } else {
                 return pressResult
             }
-        
-//          print("Out: active ", activeShortcutNames, "presed" , presedShortcutNames, "\n")
         }
     }
     
@@ -146,17 +144,23 @@ class ShortcutCapture: ObservableObject {
     }
     
     func stopListening() {
-//        subscribeMonitoring?.stop()
+        helperMonitor?.stop()
     }
     
     func startMonitoring() {
         isMonitoring = true
         defaults.set(isMonitoring, forKey: "isMonitoring")
+        DispatchQueue.main.async {
+            self.startListening()
+        }
     }
 
     func stopMonitoring() {
         isMonitoring = false
         defaults.set(isMonitoring, forKey: "isMonitoring")
+        DispatchQueue.main.async {
+            self.stopListening()
+        }
     }
     
     func startCanceling() {

@@ -1,10 +1,3 @@
-//
-//  AccessModule.swift
-//  Keyboard100HP
-//
-//  Created by Maksim on 30.09.2023.
-//
-
 import ApplicationServices
 
 func hasAccessibilityPermissions() -> Bool {
