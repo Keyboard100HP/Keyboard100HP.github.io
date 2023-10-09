@@ -19,6 +19,8 @@
 		B5FFF19E2AC77BCB00514297 /* AccessModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FFF19D2AC77BCB00514297 /* AccessModule.swift */; };
 		B5FFF1A22ACB65E500514297 /* ClickMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FFF1A12ACB65E400514297 /* ClickMonitor.swift */; };
 		B5FFF1A42ACF73F000514297 /* UpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FFF1A32ACF73F000514297 /* UpdateManager.swift */; };
+		B5FFF1A62AD3F9CD00514297 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B5FFF1A52AD3F9CD00514297 /* Localizable.xcstrings */; };
+		B5FFF1A82AD3FA2A00514297 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FFF1A72AD3FA2A00514297 /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		B5FFF19D2AC77BCB00514297 /* AccessModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessModule.swift; sourceTree = "<group>"; };
 		B5FFF1A12ACB65E400514297 /* ClickMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickMonitor.swift; sourceTree = "<group>"; };
 		B5FFF1A32ACF73F000514297 /* UpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateManager.swift; sourceTree = "<group>"; };
+		B5FFF1A52AD3F9CD00514297 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		B5FFF1A72AD3FA2A00514297 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 		B52A1C932AC16C8B00BD62EC = {
 			isa = PBXGroup;
 			children = (
+				B5FFF1A52AD3F9CD00514297 /* Localizable.xcstrings */,
 				B52A1C9E2AC16C8B00BD62EC /* Keyboard100HP */,
 				B52A1C9D2AC16C8B00BD62EC /* Products */,
 			);
@@ -85,6 +90,7 @@
 				B52A1C9F2AC16C8B00BD62EC /* App.swift */,
 				B5FFF1A12ACB65E400514297 /* ClickMonitor.swift */,
 				B52A1CA12AC16C8B00BD62EC /* ContentView.swift */,
+				B5FFF1A72AD3FA2A00514297 /* UIView.swift */,
 				B5E3F6B22AC1F45100D09BEC /* AppModel.swift */,
 				B5FFF19D2AC77BCB00514297 /* AccessModule.swift */,
 				B5E3F6B62AC1F48500D09BEC /* ShortcutCapture.swift */,
@@ -168,6 +174,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = B52A1C932AC16C8B00BD62EC;
 			productRefGroup = B52A1C9D2AC16C8B00BD62EC /* Products */;
@@ -187,6 +194,7 @@
 			files = (
 				B52A1CA72AC16C8D00BD62EC /* Preview Assets.xcassets in Resources */,
 				B52A1CA42AC16C8D00BD62EC /* Assets.xcassets in Resources */,
+				B5FFF1A62AD3F9CD00514297 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +217,7 @@
 				B52A1CB02AC16CB200BD62EC /* AppDelegate.swift in Sources */,
 				B5E3F6B32AC1F45100D09BEC /* AppModel.swift in Sources */,
 				B5E3F6B12AC1D21600D09BEC /* HelperMonitor.swift in Sources */,
+				B5FFF1A82AD3FA2A00514297 /* UIView.swift in Sources */,
 				B5FFF19E2AC77BCB00514297 /* AccessModule.swift in Sources */,
 				B5FFF1A42ACF73F000514297 /* UpdateManager.swift in Sources */,
 				B52A1CA22AC16C8B00BD62EC /* ContentView.swift in Sources */,

@@ -2,7 +2,6 @@ import Foundation
 import Carbon
 
 class InputSourceSwitcher {
-
     static func switchToNextInputSource() {
         // Получаем список доступных источников ввода
         let sources = TISCreateInputSourceList(nil, false).takeRetainedValue() as! [TISInputSource]

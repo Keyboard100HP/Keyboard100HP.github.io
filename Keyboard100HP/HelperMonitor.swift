@@ -1,25 +1,30 @@
-import Foundation
 import CoreGraphics
-
 import Foundation
-import CoreGraphics
 
 class HelperMonitor {
+    var checkTapTimer: Timer?
     var eventTap: CFMachPort?
     var handler: ((String, UInt16, String)) -> Bool
     
     init(handler: @escaping ((String, UInt16, String)) -> Bool) {
         self.handler = handler
         
-//        if !hasAccessibilityPermissions() {
-            // Запросите разрешение или уведомьте пользователя о необходимости предоставить разрешение.
+        // Запросите разрешение или уведомьте пользователя о необходимости предоставить разрешение.
         requestAccessibilityPermissions()
-//        }
-
     }
     
     deinit {
         stop()
+    }
+    
+    @objc func checkTapStatus() {
+        if ((eventTap) != nil) {
+            if (!CGEvent.tapIsEnabled(tap: eventTap!)) {
+                CGEvent.tapEnable(tap: eventTap!, enable: true)
+            }
+        } else {
+            createEventTap()
+        }
     }
 
     
@@ -48,12 +53,19 @@ class HelperMonitor {
     
     public func start() {
         createEventTap()
+        
+        // Запускаем таймер, который будет проверять состояние tap каждые 2 секунд
+        checkTapTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(checkTapStatus), userInfo: nil, repeats: true)
     }
     
     public func stop() {
         if let eventTap = eventTap {
             CGEvent.tapEnable(tap: eventTap, enable: false)
         }
+        
+        // Останавливаем таймер
+         checkTapTimer?.invalidate()
+         checkTapTimer = nil
     }
 
 }
@@ -203,7 +215,6 @@ func keyCodeToName(keyCode: UInt16) -> String {
         case 124: return "Right Arrow"
         case 125: return "Down Arrow"
         case 126: return "Up Arrow"
-//        case 179: return "Function"
         default: return "Unknown"
     }
 }

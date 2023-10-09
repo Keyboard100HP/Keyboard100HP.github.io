@@ -58,13 +58,11 @@ class ShortcutCapture: ObservableObject {
     }
     
     func subscribeMonitoring() {
-//        if !isHelperInstalled() {
         let hasAccessibilityPermissions = hasAccessibilityPermissions()
-        print("hasAccessibilityPermissions", hasAccessibilityPermissions)
+
         if (!hasAccessibilityPermissions) {
             launchHelper()
         }
-//        }
         
         helperMonitor = HelperMonitor() { [unowned self] (keyData: (String, UInt16, String)) in
             self.eventData = keyData
@@ -87,7 +85,6 @@ class ShortcutCapture: ObservableObject {
             }
 
             if (isDownEvent) {
-//                print("Down: presed", activeKeyName, activeKeyCode)
                 if (presedShortcutNames.isEmpty && !activeShortcutNames.isEmpty) {
                     if (isRecord) {
                         activeShortcutNames.removeAll()
@@ -109,7 +106,6 @@ class ShortcutCapture: ObservableObject {
             }
 
             if (isUpEvent) {
-//                print("Up: presed", activeKeyName, "\n")
                 presedShortcutNames = presedShortcutNames.filter { $0 != activeKeyName }
                 presedShortcutCodes = presedShortcutCodes.filter { $0 != activeKeyCode }
             }
@@ -197,4 +193,3 @@ class ShortcutCapture: ObservableObject {
     }
 
 }
-

@@ -15,25 +15,30 @@ class AppModel: ObservableObject {
                 self.shortcutCapture.isMonitoring &&
                 !self.shortcutCapture.activeShortcutNames.isEmpty
             ) {
-                let isDown = keyData.2 == "keyDown";
-                let isTrigger = self.arraysHaveSameElements(self.shortcutCapture.activeShortcutNames, self.shortcutCapture.presedShortcutNames)
+                let isDown = keyData.2 == "keyDown"
+                let isUp = !isDown
                 
                 if (self.shortcutCapture.activeShortcutNames.count == 1) {
-                    let isFastShortcutListening = isTrigger && isDown;
-                    let isFastShortcutFinishing = self.timeKeyDown != nil
-                    let isFastShortcutCanceling = isFastShortcutFinishing && self.shortcutCapture.presedShortcutNames.count > 1
+                    let pressedLength = self.shortcutCapture.presedShortcutNames.count;
+                    
+                    let isLastActionTrigger = pressedLength != 0 && self.shortcutCapture.presedShortcutNames[pressedLength - 1] == self.shortcutCapture.activeShortcutNames[0]
+                    let isListeningTrigger = isLastActionTrigger && isDown
+
+                    if (isListeningTrigger) {
+                        self.timeKeyDown = Date()
+                        return false
+                    }
+                    
+                    let isFinishingTrigger = self.timeKeyDown != nil
+                    let isFastShortcutCanceling =  isFinishingTrigger && isDown
                     
                     if (isFastShortcutCanceling) {
                         self.timeKeyDown = nil
                         return false
                     }
                     
-                    if (isFastShortcutListening) {
-                        self.timeKeyDown = Date()
-                        return false
-                    }
 
-                    if (isFastShortcutFinishing) {
+                    if (isFinishingTrigger) {
                         let timeKeyDown = self.timeKeyDown!
                         self.timeKeyDown = nil
                         
@@ -42,6 +47,8 @@ class AppModel: ObservableObject {
                         }
                     }
                 } else {
+                    let isTrigger = self.arraysHaveSameElements(self.shortcutCapture.activeShortcutNames, self.shortcutCapture.presedShortcutNames)
+                    
                     if (isTrigger) {
                         return self.handleFnKeyPress()
                     }
