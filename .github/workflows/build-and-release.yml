@@ -1,0 +1,53 @@
+name: Xcode - Build and Package
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build and create package for default scheme using xcodebuild command
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set Default Scheme
+        run: |
+          scheme_list=$(xcodebuild -list -json)
+          default=$(echo $scheme_list | jq -r '.project.targets[0]')
+          echo "SCHEME=$default" >> $GITHUB_ENV
+          echo Using default scheme: $default
+
+      - name: Build
+        run: |
+          if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\\.xcodeproj\$`"; fi
+          file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
+          xcodebuild clean build analyze -scheme "$SCHEME" -"$filetype_parameter" "$file_to_build" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+
+      - name: Find .app file
+        run: |
+          app_path=$(find /Users/runner/Library/Developer/Xcode/DerivedData -name "*.app" | head -n 1)
+          echo "APP_PATH=$app_path" >> $GITHUB_ENV
+
+      - name: Create .pkg
+        run: |
+          pkgpath="./${SCHEME}.pkg"
+          productbuild --component "$APP_PATH" /Applications "$pkgpath"
+
+      - name: Upload .pkg as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${SCHEME}.pkg
+          path: ./${SCHEME}.pkg
+          
+      - name: Create Release and Upload .pkg
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          gh release create release-${{ github.sha }} ./${SCHEME}.pkg --title "Release ${{ github.sha }}" --notes "Auto-generated release from GitHub Actions."
+        env:
+          GH_TOKEN: ${{ secrets.KEYBOARD100HP_TOKEN }}
+
