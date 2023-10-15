@@ -1,0 +1,5 @@
+{
+    "scripts": {
+        "server": "npx http-server ./ -S -C ~/.ssh/cert.pem -K ~/.ssh/key.pem"
+    }
+}
