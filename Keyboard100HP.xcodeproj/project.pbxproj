@@ -12,6 +12,7 @@
 		B52A1CA42AC16C8D00BD62EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52A1CA32AC16C8D00BD62EC /* Assets.xcassets */; };
 		B52A1CA72AC16C8D00BD62EC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52A1CA62AC16C8D00BD62EC /* Preview Assets.xcassets */; };
 		B52A1CB02AC16CB200BD62EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A1CAF2AC16CB200BD62EC /* AppDelegate.swift */; };
+		B5BDF6F22AE4428100DD6356 /* install.sh in Resources */ = {isa = PBXBuildFile; fileRef = B5BDF6F12AE4428100DD6356 /* install.sh */; };
 		B5DFAB9E2ADCA189006D187A /* HelperAutoLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DFAB9D2ADCA189006D187A /* HelperAutoLaunch.swift */; };
 		B5E3F6B12AC1D21600D09BEC /* HelperMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E3F6B02AC1886100D09BEC /* HelperMonitor.swift */; };
 		B5E3F6B32AC1F45100D09BEC /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E3F6B22AC1F45100D09BEC /* AppModel.swift */; };
@@ -35,6 +36,7 @@
 		B52A1CAF2AC16CB200BD62EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B52A1CB72AC1869600BD62EC /* KeyReaderHelper.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyReaderHelper.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52A1CBB2AC186B000BD62EC /* KeyReaderHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KeyReaderHelper-Info.plist"; sourceTree = "<group>"; };
+		B5BDF6F12AE4428100DD6356 /* install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install.sh; sourceTree = "<group>"; };
 		B5DFAB9D2ADCA189006D187A /* HelperAutoLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperAutoLaunch.swift; sourceTree = "<group>"; };
 		B5E3F6B02AC1886100D09BEC /* HelperMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperMonitor.swift; sourceTree = "<group>"; };
 		B5E3F6B22AC1F45100D09BEC /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		B52A1C932AC16C8B00BD62EC = {
 			isa = PBXGroup;
 			children = (
+				B5BDF6F12AE4428100DD6356 /* install.sh */,
 				B5FFF1A52AD3F9CD00514297 /* Localizable.xcstrings */,
 				B52A1C9E2AC16C8B00BD62EC /* Keyboard100HP */,
 				B52A1C9D2AC16C8B00BD62EC /* Products */,
@@ -197,6 +200,7 @@
 			files = (
 				B52A1CA72AC16C8D00BD62EC /* Preview Assets.xcassets in Resources */,
 				B52A1CA42AC16C8D00BD62EC /* Assets.xcassets in Resources */,
+				B5BDF6F22AE4428100DD6356 /* install.sh in Resources */,
 				B5FFF1A62AD3F9CD00514297 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,6 +277,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -338,6 +344,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -368,11 +376,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Keyboard100HP/Keyboard100HP.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Keyboard100HP/Preview Content\"";
-				DEVELOPMENT_TEAM = QXZMG6HD5C;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = QXZMG6HD5C;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -387,6 +397,7 @@
 				MARKETING_VERSION = "$(SHARED_APP_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = room.Keyboard100HP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -398,11 +409,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Keyboard100HP/Keyboard100HP.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Keyboard100HP/Preview Content\"";
-				DEVELOPMENT_TEAM = QXZMG6HD5C;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = QXZMG6HD5C;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -417,6 +430,7 @@
 				MARKETING_VERSION = "$(SHARED_APP_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = room.Keyboard100HP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
