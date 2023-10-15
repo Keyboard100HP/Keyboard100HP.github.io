@@ -11,5 +11,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         print("Приложение запущено!")
         
         _ = AppModel()
+        _ = AutoLaunchHelper()
     }
 }
