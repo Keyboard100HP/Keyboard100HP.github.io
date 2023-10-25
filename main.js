@@ -37,3 +37,37 @@ document.addEventListener('mousemove', appManager.outSubscribe);
 document.addEventListener('keydown', appManager.langSubscribe);
 
 store.init();
+
+let counter = 1;
+const ball = document.querySelector('#ball');
+
+const stepSize = 2000
+const stepTime = 1000
+
+setTimeout(() => {
+    ball.classList.add('ball');
+}, stepSize);
+setTimeout(() => {
+    ball.classList.remove('ball');
+}, stepSize + stepTime);
+
+setTimeout(() => {
+    ball.classList.add('ball');
+}, stepSize * 2);
+setTimeout(() => {
+    ball.classList.remove('ball');
+}, stepSize * 2 + stepTime);
+
+setTimeout(() => {
+    ball.classList.add('ball');
+}, stepSize * 3);
+setTimeout(() => {
+    ball.classList.remove('ball');
+}, stepSize * 3 + stepTime);
+
+setTimeout(() => {
+    ball.classList.add('ball');
+}, stepSize * 4);
+setTimeout(() => {
+    ball.classList.remove('ball');
+}, stepSize * 4 + stepTime);

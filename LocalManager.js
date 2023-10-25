@@ -27,7 +27,6 @@ export class LocalManager {
     _userLang;
 
     constructor() {
-        console.log("langsdds");
        this._userLang = (navigator.language || 'en').slice(0, 2);
        this.localize(this._userLang);
     }

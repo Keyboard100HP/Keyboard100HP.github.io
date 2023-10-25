@@ -2,7 +2,7 @@ export class TimeManager {
     constructor () {
         this.update();
 
-        setInterval(this.update(), 60000);
+        setInterval(this.update(), 60 * 1000);
     }
 
     update() {
