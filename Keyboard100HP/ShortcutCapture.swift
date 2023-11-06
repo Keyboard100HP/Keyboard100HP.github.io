@@ -35,34 +35,30 @@ class ShortcutCapture: ObservableObject {
         subscribeMonitoring()
     }
     
-    func isHelperInstalled() -> Bool {
-        let jobDicts = SMJobCopyDictionary(kSMDomainSystemLaunchd, "room.KeyReaderHelper" as CFString)
-        let installed = (jobDicts != nil)
-        return installed
-    }
+//    func isHelperInstalled() -> Bool {
+//        let jobDicts = SMJobCopyDictionary(kSMDomainSystemLaunchd, "room.KeyReaderHelper" as CFString)
+//        let installed = (jobDicts != nil)
+//        return installed
+//    }
     
-    func launchHelper() {
-        var authRef: AuthorizationRef?
-        let status = AuthorizationCreate(nil, nil, [], &authRef)
-        if status == errAuthorizationSuccess {
-            var error: Unmanaged<CFError>?
-            
-            if SMJobBless(kSMDomainSystemLaunchd, "room.KeyReaderHelper" as CFString, authRef, &error) {
-                print("Helper launched successfully")
-            } else {
-                if let error = error?.takeRetainedValue() {
-                    print("Error launching helper: \(error)")
-                }
-            }
-        }
-    }
+//    func launchHelper() {
+//        var authRef: AuthorizationRef?
+//        let status = AuthorizationCreate(nil, nil, [], &authRef)
+//        if status == errAuthorizationSuccess {
+//            var error: Unmanaged<CFError>?
+//            
+//            if SMJobBless(kSMDomainSystemLaunchd, "room.KeyReaderHelper" as CFString, authRef, &error) {
+//                print("Helper launched successfully")
+//            } else {
+//                if let error = error?.takeRetainedValue() {
+//                    print("Error launching helper: \(error)")
+//                }
+//            }
+//        }
+//    }
     
     func subscribeMonitoring() {
-        let hasAccessibilityPermissions = hasAccessibilityPermissions()
 
-        if (!hasAccessibilityPermissions) {
-            launchHelper()
-        }
         
         helperMonitor = HelperMonitor() { [unowned self] (keyData: (String, UInt16, String)) in
             self.eventData = keyData

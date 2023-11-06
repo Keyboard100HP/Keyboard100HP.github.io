@@ -10,7 +10,11 @@ class HelperMonitor {
         self.handler = handler
         
         // Запросите разрешение или уведомьте пользователя о необходимости предоставить разрешение.
-        requestAccessibilityPermissions()
+        let hasAccessibilityPermissions = hasAccessibilityPermissions()
+        
+        if (!hasAccessibilityPermissions) {
+            requestAccessibilityPermissions()
+        }
     }
     
     deinit {
@@ -18,12 +22,16 @@ class HelperMonitor {
     }
     
     @objc func checkTapStatus() {
-        if ((eventTap) != nil) {
-            if (!CGEvent.tapIsEnabled(tap: eventTap!)) {
-                CGEvent.tapEnable(tap: eventTap!, enable: true)
+        let hasAccessibilityPermissions = hasAccessibilityPermissions()
+        
+        if (hasAccessibilityPermissions) {
+            if ((eventTap) != nil) {
+                if (!CGEvent.tapIsEnabled(tap: eventTap!)) {
+                    CGEvent.tapEnable(tap: eventTap!, enable: true)
+                }
+            } else {
+                createEventTap()
             }
-        } else {
-            createEventTap()
         }
     }
 
@@ -89,7 +97,7 @@ func handleEvent(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refc
         break
     }
     
-    var res = monitor.handler((keyName, keyCode, keyType))
+    let res = monitor.handler((keyName, keyCode, keyType))
     
     if res == true {
         return nil
