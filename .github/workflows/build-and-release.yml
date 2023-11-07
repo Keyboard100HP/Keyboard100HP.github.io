@@ -43,34 +43,32 @@ jobs:
           mkdir -p temp_installer/package
           cp -r "$APP_PATH" temp_installer/package/
           cp "./${SCHEME}.pkg" temp_installer/package/
-          cp ./background.jpg temp_installer/
+          cp ./DS_dms.png temp_installer/
 
       - name: Install create-dmg
         run: npm install -g create-dmg
 
-      - name: Create DMG with background
+      - name: Create DMG
         run: |
-          set -eux
-          installer_dir="${GITHUB_WORKSPACE}/temp_installer/package"
           create-dmg \
-          "$installer_dir" \
-          "${GITHUB_WORKSPACE}/" \
           --overwrite \
           --dmg-title="${SCHEME}_installer" \
-          --background="${GITHUB_WORKSPACE}/temp_installer/background.jpg" \
-          --window-size=600 400 \
+          --background="temp_installer/DS_dms.png" \
+          --window-size=300 200 \
           --icon-size=100 \
-          --icon="${SCHEME}.pkg" 200 200
+          --icon="${SCHEME}.pkg" 200 200 \
+          "temp_installer/package/" \
+          "${GITHUB_WORKSPACE}/${SCHEME}_installer.dmg"
 
       - name: Upload .dmg as artifact
         uses: actions/upload-artifact@v2
         with:
           name: installer.dmg
-          path: ./Keyboard100HP_installer.dmg
+          path: ./${SCHEME}_installer.dmg
 
       - name: Create Release and Upload .dmg
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          gh release create release-${{ github.sha }} ./Keyboard100HP_installer.dmg --title "Release ${{ github.sha }}" --notes "Auto-generated release from GitHub Actions."
+          gh release create "release-${{ github.sha }}" ./${SCHEME}_installer.dmg --title "Release ${{ github.sha }}" --notes "Auto-generated release from GitHub Actions."
         env:
           GH_TOKEN: ${{ secrets.KEYBOARD100HP_TOKEN }}
